@@ -1,0 +1,8 @@
+<h2 mat-dialog-title>{{title}}</h2>
+<mat-dialog-content class="dialog">
+    {{content}}
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button cdkFocusInitial (click)="onCloseForm(false)">Atšaukti</button>
+    <button mat-button (click)="onCloseForm(true)">Ištrinti</button>
+</mat-dialog-actions>

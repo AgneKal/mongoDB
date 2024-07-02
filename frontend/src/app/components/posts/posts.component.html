@@ -1,0 +1,43 @@
+<div class="row">
+    <div class="col-md-12 mb-3">
+        <button mat-stroked-button (click)="onAddClick()">Pridėti naują įrašą</button>
+    </div>
+</div>
+
+
+
+<div class="row">
+    <div class="col-md-12">
+        <mat-card appearance="outlined">
+            <mat-card-content>
+                <table mat-table [dataSource]="posts">
+
+                    <mat-text-column name="content" [headerText]="'Turinys'"></mat-text-column>
+
+
+                    <ng-container matColumnDef="title">
+                        <th mat-header-cell *matHeaderCellDef>Antraštė</th>
+                        <td mat-cell *matCellDef="let post">{{ post.title }}</td>
+                    </ng-container>
+
+
+                    <ng-container matColumnDef="author.name">
+                        <th mat-header-cell *matHeaderCellDef>Author name</th>
+                        <td mat-cell *matCellDef="let post"> {{ post.author.name }}</td>
+                    </ng-container>
+
+
+                    <ng-container matColumnDef="delete">
+                        <th mat-header-cell *matHeaderCellDef>Ištrinti</th>
+                        <td mat-cell *matCellDef="let post">
+                            <button mat-stroked-button class="btn btn-danger" (click)="onDeleteClick(post._id, post.title)">Ištrinti</button>
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="['title', 'content', 'author.name', 'delete']"></tr>
+                    <tr mat-row *matRowDef="let row; columns:['title', 'content', 'author.name', 'delete']"></tr>
+                </table>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

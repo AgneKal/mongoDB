@@ -1,0 +1,43 @@
+<h2 mat-dialog-title>Pridėti naują įrašą</h2>
+<mat-dialog-content class="dialog">
+    <form id="addPostForm" (ngSubmit)="onSubmitPost(f)" #f="ngForm">
+        <div class="row">
+            <div class="col-md-12">
+                <mat-form-field class="w-100">
+                    <mat-label>Pavadinimas</mat-label>
+                    <input matInput ngModel name="title">
+                </mat-form-field>
+            </div>
+            <div class="col-md-12">
+                <mat-form-field class="w-100">
+                    <mat-label>Įrašo turinys</mat-label>
+                    <textarea matInput ngModel name="content"></textarea>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <mat-divider></mat-divider>
+        <div class="row">
+            <div class="col-md-12">
+                <mat-form-field class="w-100">
+                    <mat-label>Autoriaus vardas</mat-label>
+                    <input matInput ngModel name="author_name">
+                </mat-form-field>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <mat-form-field class="w-100">
+                    <mat-label>Autoriaus el. pašto adresas</mat-label>
+                    <input matInput ngModel name="author_email">
+                </mat-form-field>
+            </div>
+
+        </div>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button (click)="onCloseForm()">Uždaryti</button>
+    <button mat-button cdkFocusInitial type="submit" form="addPostForm">Pridėti naują įrašą</button>
+</mat-dialog-actions>
