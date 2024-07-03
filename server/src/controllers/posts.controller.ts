@@ -1,9 +1,10 @@
 import { Post } from "../models/post";
 
+const pdfMaster = require('pdf-master');
+
 export class PostsController{
     static async getAll(req:any, res:any){
         const posts=await Post.find();
-        console.log(posts);
         res.json(posts);
     }
 
@@ -63,5 +64,16 @@ export class PostsController{
             post.save();
         }
         res.json(post);
+    }
+
+    static async pdf (req:any, res:any){
+        const post = await Post.findById(req.params.id);
+        const pdf = await pdfMaster.generatePdf('./src/pdf.hbs', {post: post?.toObject()});
+
+        res.contentType("aplication/pdf");
+        res.status(200).send(pdf);
+        res.json({
+            'naujas': 'veikia'
+        })
     }
 }
